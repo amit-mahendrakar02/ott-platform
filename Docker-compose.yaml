@@ -27,8 +27,8 @@ services:
       - user-service
 
   frontend:
-  build: ./ott-frontend
-  ports:
-    - "3004:80"
-  depends_on:
-    - api-gateway
+    build: ./ott-frontend
+    ports:
+      - "3004:80"
+    depends_on:
+      - api-gateway
