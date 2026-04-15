@@ -5,16 +5,30 @@ const cors = require("cors");
 const app = express();
 app.use(cors());
 
-// Route: get movies from content service
+// Use service names instead of localhost
+const CONTENT_SERVICE = "http://content-service:3001";
+const STREAMING_SERVICE = "http://streaming-service:3002";
+
+// Route: get movies
 app.get("/movies", async (req, res) => {
-  const response = await axios.get("http://localhost:3001/movies");
-  res.json(response.data);
+  try {
+    const response = await axios.get(`${CONTENT_SERVICE}/movies`);
+    res.json(response.data);
+  } catch (err) {
+    res.status(500).json({ error: "Content service not reachable" });
+  }
 });
 
 // Route: watch movie
 app.get("/watch/:id", async (req, res) => {
-  const response = await axios.get(`http://localhost:3002/watch/${req.params.id}`);
-  res.json(response.data);
+  try {
+    const response = await axios.get(
+      `${STREAMING_SERVICE}/watch/${req.params.id}`
+    );
+    res.json(response.data);
+  } catch (err) {
+    res.status(500).json({ error: "Streaming service not reachable" });
+  }
 });
 
 app.listen(3000, () => {

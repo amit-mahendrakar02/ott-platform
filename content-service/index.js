@@ -7,7 +7,13 @@ app.use(express.json());
 
 // Fake movie database
 let movies = [
-  { id: 1, title: "Avengers Endgame", genre: "Action", url: "https://sample-videos.com/video123/mp4/720/big_buck_bunny.mp4" },
+  {
+  "id": 1,
+  "title": "Avengers",
+  "genre": "Action",
+  "image": "https://via.placeholder.com/300x400",
+  "description": "Superhero action movie"
+},
   { id: 2, title: "Interstellar", genre: "Sci-Fi", url: "https://sample-videos.com/video123/mp4/720/big_buck_bunny.mp4" }
 ];
 
