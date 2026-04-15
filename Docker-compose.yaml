@@ -29,6 +29,6 @@ services:
   frontend:
   build: ./ott-frontend
   ports:
-    - "3005:80"
+    - "3004:80"
   depends_on:
     - api-gateway
